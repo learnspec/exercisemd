@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/learnspec/exercisemd/schema/exercisemd.schema.json",
+  "title": "ExerciseMD Frontmatter",
+  "description": "JSON Schema for the YAML frontmatter of an .exercise.md file (Level 1).",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Exercise sheet title. Inferred from the first # H1 if omitted."
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description of the exercise sheet."
+    },
+    "lang": {
+      "type": "string",
+      "description": "BCP 47 language tag (e.g. en, fr, es).",
+      "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+    },
+    "author": {
+      "type": ["string", "object"],
+      "description": "Author name, or an object with name / email / url.",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "url": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form tags for discovery."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["practice", "worksheet", "homework", "exam"],
+      "default": "practice",
+      "description": "How the sheet is meant to be used."
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Expected working time, in minutes."
+    },
+    "total_points": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Declared total. Must match the sum computed from the rubrics."
+    },
+    "materials": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Materials allowed (e.g. calculator, dictionary, open-book)."
+    },
+    "grade_level": {
+      "type": "string",
+      "description": "Free-form audience level (e.g. terminale, grade 11, undergraduate)."
+    },
+    "source": {
+      "type": "object",
+      "description": "Provenance, for exercises derived from an existing paper.",
+      "properties": {
+        "name": { "type": "string" },
+        "year": { "type": "integer" },
+        "session": { "type": "string" },
+        "url": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date, ISO 8601."
+    },
+    "updated": {
+      "type": "string",
+      "format": "date",
+      "description": "Last update date, ISO 8601."
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX identifier, or custom."
+    },
+    "spec_version": {
+      "type": "string",
+      "description": "Targeted spec version (e.g. \"0.1\")."
+    },
+    "for": {
+      "type": "string",
+      "description": "Companion files only (.solution.md): relative path to the subject file."
+    }
+  },
+  "additionalProperties": false
+}
