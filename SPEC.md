@@ -50,8 +50,8 @@ ExerciseMD deliberately has **no closed-answer syntax** (no `- [x]`, no
 `___`): if you need one, that piece belongs in a QuizMD file.
 
 One boundary case looks closed but is not: **justified true/false**
-("indiquer si l'affirmation est vraie ou fausse ; toute réponse doit être
-justifiée"). What earns the points is the justification — a production
+("state whether the claim is true or false; every answer must be
+justified"). What earns the points is the justification — a production
 judged against expectations — so it belongs in ExerciseMD, with the verdict
 carried by `[!answer]`.
 
@@ -104,7 +104,7 @@ carried by `[!answer]`.
   `### a)`, `### 2.1)`, `### A.1.b)`. Labels are free-form: deep exam
   structures (part / question / sub-question) are expressed by **flat
   compound labels** (`A.1.a`), not by deeper heading nesting.
-- A `###` heading **not** ending in `)` (e.g. `### Partie B — étude de g`)
+- A `###` heading **not** ending in `)` (e.g. `### Part B — the function g`)
   is a **statement section**: shared context for the sub-questions that
   follow it, carrying no points and no grading callouts of its own.
 - A sub-question that receives **no grading callout** (neither inline nor in
@@ -126,39 +126,39 @@ Text on the marker line is part of the callout (`> [!answer] x = 3`).
 
 One document-level exception: an `[!expected]` placed **before the first
 `## En` heading** applies to the whole document. This carries cross-cutting
-grading guidance — real exams have it ("la qualité de la rédaction sera
-prise en compte", "les traces de recherche seront valorisées") — that
-graders must weigh on every sub-question.
+grading guidance — real exams have it ("the quality of the writing is
+taken into account", "partial work is credited") — that graders must
+weigh on every sub-question.
 
 ### Minimal Example
 
 ```markdown
-# Équations du second degré — entraînement
+# Quadratic equations — practice
 
-## E1 · Résolution
+## E1 · Solve
 
-Résoudre dans $\mathbb{R}$ l'équation $x^2 - 2x - 3 = 0$.
+Solve in $\mathbb{R}$: $x^2 - 2x - 3 = 0$.
 
 > [!hint]
-> Calcule le discriminant $\Delta = b^2 - 4ac$.
+> Compute the discriminant $\Delta = b^2 - 4ac$.
 
-> [!answer] $x_1 = -1$ et $x_2 = 3$
+> [!answer] $x_1 = -1$ and $x_2 = 3$
 
 > [!solution]
-> On identifie $a = 1$, $b = -2$, $c = -3$.
+> Identify $a = 1$, $b = -2$, $c = -3$.
 >
-> $\Delta = (-2)^2 - 4 \times 1 \times (-3) = 4 + 12 = 16 > 0$ : deux
-> solutions réelles.
+> $\Delta = (-2)^2 - 4 \times 1 \times (-3) = 4 + 12 = 16 > 0$: two real
+> roots.
 >
 > $$x = \frac{2 \pm \sqrt{16}}{2} = \frac{2 \pm 4}{2}$$
 >
-> D'où $x_1 = -1$ et $x_2 = 3$.
+> Hence $x_1 = -1$ and $x_2 = 3$.
 
 > [!rubric]
-> | Attendu | Points |
+> | Criterion | Points |
 > |---|---|
-> | Discriminant correctement calculé | 1 |
-> | Les deux racines exactes | 1 |
+> | Discriminant computed correctly | 1 |
+> | Both exact roots | 1 |
 ```
 
 This file is a complete, printable worksheet with its answer key — and,
@@ -213,13 +213,14 @@ the task.
 
 ```markdown
 > [!anchor score:14]
-> Plan en trois parties tenu, connaissance réelle de l'œuvre, mais tendance
-> à raconter plutôt qu'à discuter la thèse ; troisième partie où des
-> éléments de cours sont plaqués. [extrait ou résumé fidèle de la copie]
+> Three-part plan held to the end, real knowledge of the text, but a
+> tendency to retell rather than discuss the claim; the third part drops in
+> course material that does not serve the question. [excerpt, or a faithful
+> summary of the script]
 ```
 
 Anchors exist because descriptors alone do not calibrate. A grader reading
-only "bonne maîtrise du sujet" applies its own idea of *good*; benchmarking
+only "good command of the subject" applies its own idea of *good*; benchmarking
 showed AI graders converge on an idealised standard and under-score real
 exam work by around four points on twenty, while human examiners score
 relative to what is achievable at that level in exam conditions. Anchors
@@ -233,7 +234,7 @@ grader-facing: `strip` removes them like any other grading callout.
 
 - Points are non-negative numbers (decimals allowed: `0.5`).
 - A criterion may reference partial credit conditions in its text
-  ("1 pt si la méthode est posée, 0.5 si seulement amorcée").
+  ("1 pt if the method is set out, 0.5 if only started").
 - The **points of a sub-question** = the sum of its rubric rows. The
   **points of an exercise** = the sum of its sub-questions (or of its own
   rubric if it has no sub-questions). An explicit `points:` in a
@@ -283,15 +284,15 @@ distribution, version control visibility), the grading kit may live in a
 
 ```markdown
 ---
-for: ./bac-2026-maths-sujet.exercise.md
-lang: fr
+for: ./final-paper-2026.exercise.md
+lang: en
 ---
 
 ## E1
 
 ### a)
 
-> [!answer] $x_1 = -1$ et $x_2 = 3$
+> [!answer] $x_1 = -1$ and $x_2 = 3$
 
 > [!solution]
 > ...
@@ -339,18 +340,18 @@ prefer the canonical merged form.
 
 ```yaml
 ---
-title: Baccalauréat général — Mathématiques — Sujet 1
-lang: fr
+title: Advanced Mathematics — Final Paper 1
+lang: en
 kind: exam
 duration: 240
 total_points: 20
 materials: [calculator]
-grade_level: terminale
+grade_level: grade 12
 source:
-  name: Baccalauréat général
+  name: National Final Examination
   year: 2026
-  session: métropole, juin
-license: etalab-2.0
+  session: June
+license: custom
 spec_version: "0.1"
 ---
 ```
@@ -363,14 +364,14 @@ A ` ```exercise ` block immediately after an exercise **or sub-question**
 heading overrides defaults for that scope:
 
 ```markdown
-## E2 · Étude de fonction
+## E2 · Function study
 
 ```exercise
-id: fonction-ln-01
+id: log-function-01
 points: 8
 difficulty: hard
 time: 45
-tags: [analyse, logarithme]
+tags: [analysis, logarithm]
 bloom: analysis
 ```
 ```
@@ -447,6 +448,11 @@ the fate of heavyweight assessment standards:
 
 ## Design Notes
 
+- **All examples in this spec are English, the format is not.** Because the
+  reserved markers are callout tags rather than headings, an exercise can be
+  authored entirely in another language without any parser configuration.
+  See `samples/fonctions-derivees.exercise.md`, written end to end in
+  French, where no marker changes.
 - **Callouts, not headings.** Reserved markers are GFM-style callout tags
   (`[!solution]`), not natural-language headings (`### Solution`): the format
   stays fully language-neutral (a French author writes French everywhere),
