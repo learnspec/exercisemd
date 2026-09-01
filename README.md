@@ -84,6 +84,7 @@ exercisemd/
 | GlossaryMD: glossaries | [learnspec/glossarymd](https://github.com/learnspec/glossarymd) |
 | BadgeMD: micro-credentials | [learnspec/badgemd](https://github.com/learnspec/badgemd) |
 | CertMD: macro-credentials | [learnspec/certmd](https://github.com/learnspec/certmd) |
+| ListenMD: speech-only episode scripts | [learnspec/listenmd](https://github.com/learnspec/listenmd) |
 
 ## License
 
